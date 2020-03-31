@@ -28,7 +28,7 @@ DAY_CHOICES = (
 (WENDSDAY, 'Среда'),
 (THURSDAY, 'Четверг'),
 (FRIDAY, 'Пятница'),
-(SATURDAY, 'Субота'),
+(SATURDAY, 'Суббота'),
 )
 
 

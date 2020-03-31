@@ -40,7 +40,7 @@ def timetable(request, timetable_id):
         timetableForSaturday= Timetable.objects.filter(group_id = timetable_id, day = "S")
     except:
         raise Http404("Расписание не найдено")
-    return render(request, 'timetable.html', {'timetableForMonday': timetableForMonday}, {'timetableForTuesday': timetableForTuesday}, {'timetableForWendsday': timetableForWendsday}, {'timetableForThursday': timetableForThursday}, {'timetableForFriday': timetableForFriday}, {'timetableForSaturday': timetableForSaturday}, )
+    return render(request, 'timetable.html', {'timetableForMonday': timetableForMonday, 'timetableForTuesday': timetableForTuesday, 'timetableForWendsday': timetableForWendsday, 'timetableForThursday': timetableForThursday, 'timetableForFriday': timetableForFriday, 'timetableForSaturday': timetableForSaturday}, )
 
 # Creating Timetable view
 @login_required

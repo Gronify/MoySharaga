@@ -5,82 +5,49 @@
 {% block content %}
 {% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Понедельник</th>
-      <th scope="col">Вторник</th>
-      <th scope="col">Среда</th>
-      <th scope="col">Четверг</th>
-      <th scope="col">Пятница</th>
-      <th scope="col">Субота</th>
-    </tr>
-  </thead>
+
   <tbody>
     <tr>
+      <th scope="row">ПН</th>
     {% for c in timetableForMonday %}
-          <th>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</th>
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
     {% endfor %}
     </tr>
-
+    <tr>
+      <th scope="row">ВТ</th>
+    {% for c in timetableForTuesday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">СР</th>
+    {% for c in timetableForWendsday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">ЧТ</th>
+    {% for c in timetableForThursday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">ПТ</th>
+    {% for c in timetableForFriday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    <tr>
+      <th scope="row">СБ</th>
+    {% for c in timetableForSaturday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
   </tbody>
+</table>
 
 {% else %}
         Группа не найдена =(
 
 {% endif %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Понедельник</th>
-      <td>{{timetable.subject}}</td>
-      <td>{{timetable.subject}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Вторник</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Среда</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Четверг</th>
-      <td>Предмет1</td>
-      <td>Предмет1</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Пятница</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
 
 {% endblock %}
