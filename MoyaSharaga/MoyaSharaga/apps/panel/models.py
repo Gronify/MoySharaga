@@ -14,11 +14,12 @@ SEX_CHOICES = (
 
 # consts for Timetable model(day)
 NODAY = 'N/A'
-MONDAY = 'Понедельник'
-TUESDAY = 'Вторник'
-WENDSDAY = 'Среда'
-THURSDAY = 'Четверг'
-FRIDAY = 'Пятница'
+MONDAY = 'M'
+TUESDAY = 'T'
+WENDSDAY = 'W'
+THURSDAY = 'TH'
+FRIDAY = 'F'
+SATURDAY = 'S'
 
 DAY_CHOICES = (
 (NODAY, 'Не выбрано'),
@@ -27,7 +28,9 @@ DAY_CHOICES = (
 (WENDSDAY, 'Среда'),
 (THURSDAY, 'Четверг'),
 (FRIDAY, 'Пятница'),
+(SATURDAY, 'Суббота'),
 )
+
 
 # University model
 class University(models.Model):
@@ -181,7 +184,7 @@ class Timetable(models.Model):
 
   group = models.ForeignKey(Group, on_delete = models.CASCADE)
   subject = models.ForeignKey(Subject, on_delete = models.CASCADE)
-  day = models.CharField('День недели', max_length=50, choices = DAY_CHOICES, default = NODAY)
+  day = models.CharField('День недели', max_length=3, choices = DAY_CHOICES, default = NODAY)
   subject_datetime_start = models.TimeField('Время начала пары')
   subject_datetime_stop = models.TimeField('Время конца пары')
 

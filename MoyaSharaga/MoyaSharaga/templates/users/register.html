@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Зарестрируйся Сегодня</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Зарегестрироваться</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Уже Есть Аккаунт?<a class="ml-2" href="{% url 'users:login' %}">Войти</a>
-            </small>
-        </div>
-      </div>
+<div>
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Зарестрируйся Сегодня</legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Зарегестрироваться</button>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Уже Есть Аккаунт?<a class="ml-2" href="{% url 'users:login' %}">Войти</a>
+    </small>
+  </div>
+</div>
 {% endblock content %}

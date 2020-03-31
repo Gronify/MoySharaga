@@ -32,10 +32,15 @@ def student(request, student_id):
 @login_required
 def timetable(request, timetable_id):
     try:
-        timetable = Timetable.objects.get(id = timetable_id)
+        timetableForMonday = Timetable.objects.filter(group_id = timetable_id, day = "M")
+        timetableForTuesday = Timetable.objects.filter(group_id = timetable_id, day = "T")
+        timetableForWendsday = Timetable.objects.filter(group_id = timetable_id, day = "W")
+        timetableForThursday = Timetable.objects.filter(group_id = timetable_id, day = "TH")
+        timetableForFriday = Timetable.objects.filter(group_id = timetable_id, day = "F")
+        timetableForSaturday= Timetable.objects.filter(group_id = timetable_id, day = "S")
     except:
         raise Http404("Расписание не найдено")
-    return render(request, 'timetable.html', {'timetable': timetable})
+    return render(request, 'timetable.html', {'timetableForMonday': timetableForMonday, 'timetableForTuesday': timetableForTuesday, 'timetableForWendsday': timetableForWendsday, 'timetableForThursday': timetableForThursday, 'timetableForFriday': timetableForFriday, 'timetableForSaturday': timetableForSaturday}, )
 
 # Creating Timetable view
 @login_required

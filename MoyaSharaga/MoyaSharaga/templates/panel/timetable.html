@@ -1,62 +1,53 @@
 {% extends 'base.html' %}
 
-{% block title %}Расписание{{timetable.id}}{% endblock %}
+{% block title %}Расписание{% endblock %}
 
 {% block content %}
-
+{% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
 <table class="table">
-  <thead>  
-    <tr>
-      <th scope="col">{{timetable.group}}</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-      <th scope="col">time</th>
-    </tr>
-  </thead>
+
   <tbody>
     <tr>
-      <th scope="row">Понедельник</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">ПН</th>
+    {% for c in timetableForMonday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
     </tr>
     <tr>
-      <th scope="row">Вторник</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">ВТ</th>
+    {% for c in timetableForTuesday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
     </tr>
     <tr>
-      <th scope="row">Среда</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">СР</th>
+    {% for c in timetableForWendsday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
     </tr>
     <tr>
-      <th scope="row">Четверг</th>
-      <td>Предмет1</td>
-      <td>Предмет1</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">ЧТ</th>
+    {% for c in timetableForThursday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
     </tr>
     <tr>
-      <th scope="row">Пятница</th>
-      <td>Предмет1</td>
-      <td>Предмет2</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">ПТ</th>
+    {% for c in timetableForFriday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    <tr>
+      <th scope="row">СБ</th>
+    {% for c in timetableForSaturday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
     </tr>
   </tbody>
 </table>
+
+{% else %}
+        Группа не найдена =(
+
+{% endif %}
 
 {% endblock %}
