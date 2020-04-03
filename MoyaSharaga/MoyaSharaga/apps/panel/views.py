@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required # form for auth
 
-from .forms import TimetableForm
+from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm
 from .models import University, Student, Group, Timetable
 
 # Home Page view
@@ -54,3 +54,60 @@ def time_new(request):
     else:
         form = TimetableForm()
         return render(request, 'time_new.html', {'form': form})
+
+
+#@login_required
+def adding(request, adding_id):
+    if adding_id == 1:
+        form = FacultyForm(request.POST)
+        if form.is_valid():
+            faculty = form.save()
+            faculty.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = FacultyForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 2:
+        form = DepartmentForm(request.POST)
+        if form.is_valid():
+            department = form.save()
+            department.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = DepartmentForm()
+            return render(request, 'university_adding.html', {'form': form})
+    
+    elif adding_id == 3:
+        form = SpecialtyForm(request.POST)
+        if form.is_valid():
+            specialty = form.save()
+            specialty.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = SpecialtyForm()
+            return render(request, 'university_adding.html', {'form': form})
+    
+    elif adding_id == 4:
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            group = form.save()
+            group.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = GroupForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 5:
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            student = form.save()
+            student.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = StudentForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+
+def choice(request):
+    return render(request, 'adding_choice.html')
