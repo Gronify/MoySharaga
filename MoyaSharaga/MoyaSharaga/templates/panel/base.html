@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load panel_extras %}
 <html lang="en" class="h-100">
 
 <head>
@@ -29,18 +30,13 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home' %}">Расписание<span class="sr-only">(current)</span></a>
         </li>
+        {% if user.is_authenticated %}
+        {% if request.user|has_group:"University" %}
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'panel:time_new' %}">Добавить Расписание<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'panel:choice' %}">Добавить<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Расписание</a>
-            <a class="dropdown-item" href="{% url 'panel:time_new' %}">Добавить Расписание</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
+        {% endif %}
+        {% endif %}
       </ul>
 
 
