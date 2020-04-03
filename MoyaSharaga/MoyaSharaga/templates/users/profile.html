@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>{{ user.username }}</h1> 
+<p><b>Ваш логин:</b>{{ user.username }}</p>
+
+{% if student %}
+<h4>{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
+<p>
+    <i class="glyphicon glyphicon-envelope"></i><b>Группа:</b>{{student.group}}
+    <br/>
+    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{student.student_sex}}
+</p>
+
+{% else %}
+<h4>Ваш аккаун не привязан :(</h4>
+{% endif %}
 {% endblock content %}
