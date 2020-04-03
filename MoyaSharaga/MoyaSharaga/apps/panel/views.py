@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required # form for auth
 
-from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm
+from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm, UserStudentForm
 from .models import University, Student, Group, Timetable
 
 # Home Page view
@@ -106,6 +106,16 @@ def adding(request, adding_id):
             return render(request, 'university_adding.html', {'form': form})
         else:
             form = StudentForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 6:
+        form = UserStudentForm(request.POST)
+        if form.is_valid():
+            user_student = form.save()
+            user_student.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = UserStudentForm()
             return render(request, 'university_adding.html', {'form': form})
 
 

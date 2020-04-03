@@ -1,6 +1,13 @@
 from django import forms
 
-from .models import Timetable, Faculty, Department, Specialty, Student, Group
+from .models import Timetable, Faculty, Department, Specialty, Student, Group, UserStudent
+
+
+class UserStudentForm(forms.ModelForm):
+
+    class Meta:
+        model = UserStudent
+        fields = ('student', 'user',)
 
 # form for timetable
 class TimetableForm(forms.ModelForm):

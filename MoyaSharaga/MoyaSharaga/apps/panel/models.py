@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # consts for Student and Teacher models(sex)
 NOT_SPECIFIED = 'N'
@@ -194,3 +195,15 @@ class Timetable(models.Model):
     class Meta:
       verbose_name = 'Расписание'
       verbose_name_plural = 'Расписание'
+
+
+class UserStudent(models.Model):
+  student = models.ForeignKey(Student, on_delete = models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.student
+
+  class Meta:
+    verbose_name = 'Связь'
+    verbose_name_plural = 'Связи'
