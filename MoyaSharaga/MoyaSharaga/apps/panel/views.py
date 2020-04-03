@@ -1,14 +1,21 @@
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required # form for auth
+from django.contrib.auth.decorators import login_required, user_passes_test # form for auth
 
 from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm, UserStudentForm
 from .models import University, Student, Group, Timetable
 
+
+# is_university decorator
+def is_university(user):
+    return user.groups.filter(name='University').exists()
+
+
 # Home Page view
 def home_view(request):
     return render(request, 'base.html')
+
 
 # Search page view
 def index(request):
@@ -19,6 +26,7 @@ def index(request):
     else:
         return render(request, 'search.html')
 
+
 # Student info page view
 @login_required
 def student(request, student_id):
@@ -27,6 +35,7 @@ def student(request, student_id):
     except:
         raise Http404("Студент не найден")
     return render(request, 'student.html', {'student': student})
+
 
 # Timetable view(need a rework)
 @login_required
@@ -42,21 +51,9 @@ def timetable(request, timetable_id):
         raise Http404("Расписание не найдено")
     return render(request, 'timetable.html', {'timetableForMonday': timetableForMonday, 'timetableForTuesday': timetableForTuesday, 'timetableForWendsday': timetableForWendsday, 'timetableForThursday': timetableForThursday, 'timetableForFriday': timetableForFriday, 'timetableForSaturday': timetableForSaturday}, )
 
-# Creating Timetable view
-@login_required
-def time_new(request):
-    if request.method == "POST":
-        form = TimetableForm(request.POST)
-        if form.is_valid():
-            timetable = form.save()
-            timetable.save()
-            return render(request, 'time_new.html', {'form': form})
-    else:
-        form = TimetableForm()
-        return render(request, 'time_new.html', {'form': form})
 
-
-#@login_required
+# adding view
+@user_passes_test(is_university)
 def adding(request, adding_id):
     if adding_id == 1:
         form = FacultyForm(request.POST)
@@ -118,6 +115,18 @@ def adding(request, adding_id):
             form = UserStudentForm()
             return render(request, 'university_adding.html', {'form': form})
 
+    elif adding_id == 7:
+        form = TimetableForm(request.POST)
+        if form.is_valid():
+            timetable = form.save()
+            timetable.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = TimetableForm()
+            return render(request, 'university_adding.html', {'form': form})
 
+
+# choice view
+@user_passes_test(is_university)
 def choice(request):
     return render(request, 'adding_choice.html')
