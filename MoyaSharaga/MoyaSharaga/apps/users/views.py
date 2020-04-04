@@ -24,6 +24,13 @@ def profile(request):
     if UserStudent.objects.filter(user = request.user):
         studentid = UserStudent.objects.filter(user = request.user).values_list('student_id').first()
         student = Student.objects.get(id = studentid[0])
-        return render(request, 'profile.html', {'student': student})
+        groupid = Student.objects.filter(id = studentid[0]).values_list('group_id').first()
+        timetableForMonday = Timetable.objects.filter(group_id = groupid, day = "M")
+        timetableForTuesday = Timetable.objects.filter(group_id = groupid, day = "T")
+        timetableForWendsday = Timetable.objects.filter(group_id = groupid, day = "W")
+        timetableForThursday = Timetable.objects.filter(group_id = groupid, day = "TH")
+        timetableForFriday = Timetable.objects.filter(group_id = groupid, day = "F")
+        timetableForSaturday= Timetable.objects.filter(group_id = groupid, day = "S")
+        return render(request, 'profile.html', {'student': student,'timetableForMonday': timetableForMonday, 'timetableForTuesday': timetableForTuesday, 'timetableForWendsday': timetableForWendsday, 'timetableForThursday': timetableForThursday, 'timetableForFriday': timetableForFriday, 'timetableForSaturday': timetableForSaturday},   )
     else:
         return render(request, 'profile.html',)
