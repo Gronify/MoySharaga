@@ -1,0 +1,147 @@
+/* This css is shit */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma;
+    background-color: #1D1D1F;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #D5D5D5;
+}
+
+h1 {
+    color: #fff;
+    font-size: 60px;
+    padding: 0;
+    font-weight: normal;
+}
+
+.subhead {
+    font-size: 33px;
+    color: #D5D5D5;
+}
+
+h2 {
+    color: #D5D5D5;
+    font-size: 37px;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+.container {
+    text-align: center;
+    padding: .8em 2em;
+}
+
+.content {
+    padding-bottom: 2.5rem;
+    height: 100%;
+}
+
+.logo {
+    width: 130px;
+    color: #fff;
+    font-size: 30px;
+    margin-left: 4em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image {
+    width: 30%;
+    height: 50%;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul {
+    font-size: 28px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: none;
+
+}
+
+nav ul li {
+    float: left;
+}
+
+.logo-link {
+    color: #D5D5D5;
+    text-align: right;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo-link:hover {
+    text-decoration: underline;
+    color: #2997FF;
+}
+
+.link {
+    color: #D5D5D5;
+    display: block;
+    text-align: right;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #2997FF;
+}
+
+
+.btn {
+    background: #2997FF;
+    display: inline-flexbox;
+    color: #fff;
+    border-radius: 25px;
+    padding: .7em;
+    text-decoration: none;
+    font-size: 29px;
+    margin-right: 1em;
+
+}
+
+.footer-container {
+    text-align: center;
+    color: #D5D5D5;
+    font-size: 20px;
+    position: absolute;
+    width: 100%;
+    padding: 0;
+}
+
+.team {
+    color: #2997FF;
+}
+
+.team:hover {
+    text-decoration: underline;
+}
+
+#btn-log {
+    padding: .7em 115px;
+}
+
+#btn-reg {
+    padding: .7em 20px;
+}
