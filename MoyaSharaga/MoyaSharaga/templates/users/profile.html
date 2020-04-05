@@ -12,7 +12,6 @@
 </p>
 {% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
 <table class="table">
-
   <tbody>
     <tr>
       <th scope="row">ПН</th>
@@ -52,6 +51,25 @@
   </tbody>
 </table>
 {% endif %}
+
+{% elif teacher%}
+<h4>{{teacher.teacher_surname}} {{teacher.teacher_name}} {{teacher.teacher_patronymic}}</h4>
+<p>
+    <i class="glyphicon glyphicon-envelope"></i><b>Должность:</b>{{teacher.teacher_position}}
+    <br/>
+    <i class="glyphicon glyphicon-envelope"></i><b>Научная степень:</b>{{teacher.teacher_position}}
+    <br/>
+    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{teacher.teacher_sex}}
+</p>
+<table class="table">
+  <tbody>
+    {% for c in connectionTSG %}
+      <tr>
+          <th scope="row">{{c.teacher}}</th><td>{{c.group}}</td><td>{{c.subject}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% else %}
 <h4>Ваш аккаун не привязан :(</h4>
 {% endif %}
