@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Timetable, Faculty, Department, Specialty, Student, Group, UserStudent
+from .models import Timetable, Faculty, Department, Specialty, Student, Teacher, Group, UserStudent, UserTeacher, ConnectionTSG
 
 
 class UserStudentForm(forms.ModelForm):
@@ -8,6 +8,19 @@ class UserStudentForm(forms.ModelForm):
     class Meta:
         model = UserStudent
         fields = ('student', 'user',)
+
+class UserTeacherForm(forms.ModelForm):
+
+    class Meta:
+        model = UserTeacher
+        fields = ('teacher', 'user',)
+
+class ConnectionTSGForm(forms.ModelForm):
+
+    class Meta:
+        model = ConnectionTSG
+        fields = ('teacher', 'group', 'subject')
+
 
 # form for timetable
 class TimetableForm(forms.ModelForm):
@@ -23,6 +36,11 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ('student_surname', 'student_name', 'student_patronymic', 'student_sex', 'group')
 
+class TeacherForm(forms.ModelForm):
+
+    class Meta:
+        model = Teacher
+        fields = ('teacher_surname', 'teacher_name', 'teacher_patronymic', 'teacher_sex', 'teacher_position', 'teacher_degree')
 
 class FacultyForm(forms.ModelForm):
 
