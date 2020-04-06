@@ -4,31 +4,10 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<h4>{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
-<p>
-    <i class="glyphicon glyphicon-envelope"></i><b>Группа:</b>{{student.group}}
-    <br/>
-    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{student.student_sex}}
-</p>
-<a class="btn btn-primary btn-lg" href="../timetable_id={{student.group_id}}">Расписание</a>
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 52433ad18421a6f73d6d60e8582f873d0695f2bc
-
 <div class="student-container">
     <h4 class="student-name">{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
     <p class="group">Группа: {{student.group}}</p>
     <p class="sex">Пол: {{student.student_sex}}</p>
+    <a class="btn" href="../timetable_id={{student.group_id}}">Расписание</a>
 </div>
-<<<<<<< HEAD
->>>>>>> 52433ad18421a6f73d6d60e8582f873d0695f2bc
-=======
->>>>>>> Gronify
-=======
->>>>>>> 52433ad18421a6f73d6d60e8582f873d0695f2bc
-
-
 {% endblock %}

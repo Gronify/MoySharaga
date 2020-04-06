@@ -78,7 +78,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     display: flex;
     background: none;
 
@@ -242,6 +242,13 @@ li {
     color: #D5D5D5;
 }
 
+.username {
+    color: #fff;
+    text-align: left;
+    margin-left: 5em;
+    font-size: 30px;
+}
+
 .student-name {
     color: #fff;
     text-align: left;
@@ -249,7 +256,7 @@ li {
     font-size: 30px;
 }
 
-.group, .sex {
+.group, .sex, .specialty, .degree {
     text-align: left;
     font-size: 25px;
     margin-left: 6em;
@@ -280,19 +287,28 @@ select {
     margin: 20px 0;
 }
 
+.timetable {
+    color: #fff;
+    margin-left: 9.5em;
+}
+
 table {
     color: #D5D5D5;
     border-collapse: collapse;
-    width: 100%;
+    width: 85%;
 }
 
 th {
     text-align: left;
-    padding: 15px;
+    padding: 0;
 }
 
 td {
     text-align: left;
     padding: 15px;
     border-bottom: 1.5px solid #2997FF;
+}
+
+.error {
+    color: #fff;
 }

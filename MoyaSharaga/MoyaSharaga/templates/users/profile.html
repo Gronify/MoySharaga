@@ -1,75 +1,80 @@
 {% extends 'base.html' %}
 {% block content %}
-<p><b>Ваш логин:</b>{{ user.username }}</p>
 
 {% if student %}
-<h4>{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
-<p>
-    <i class="glyphicon glyphicon-envelope"></i><b>Группа:</b>{{student.group}}
-    <br/>
-    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{student.student_sex}}
-</p>
+
+<div class="student-container">
+    <h4 class="student-name">{{ user.username }}: {{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
+    <p class="group">Группа: {{student.group}}</p>
+    <p class="sex">Пол: {{student.student_sex}}</p>
+</div>
+
+<div class="timetable">
 {% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
-<table class="table">
-  <tbody>
-    <tr>
-      <th scope="row">ПН</th>
-    {% for c in timetableForMonday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ВТ</th>
-    {% for c in timetableForTuesday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">СР</th>
-    {% for c in timetableForWendsday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ЧТ</th>
-    {% for c in timetableForThursday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ПТ</th>
-    {% for c in timetableForFriday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    <tr>
-      <th scope="row">СБ</th>
-    {% for c in timetableForSaturday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td scope="row">ПН</td>
+      {% for c in timetableForMonday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ВТ</td>
+      {% for c in timetableForTuesday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">СР</td>
+      {% for c in timetableForWendsday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ЧТ</td>
+      {% for c in timetableForThursday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ПТ</td>
+      {% for c in timetableForFriday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      <tr>
+        <td scope="row">СБ</td>
+      {% for c in timetableForSaturday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endif %}
 
 {% elif teacher%}
-<h4>{{teacher.teacher_surname}} {{teacher.teacher_name}} {{teacher.teacher_patronymic}}</h4>
-<p>
-    <i class="glyphicon glyphicon-envelope"></i><b>Должность:</b>{{teacher.teacher_position}}
-    <br/>
-    <i class="glyphicon glyphicon-envelope"></i><b>Научная степень:</b>{{teacher.teacher_position}}
-    <br/>
-    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{teacher.teacher_sex}}
-</p>
-<table class="table">
-  <tbody>
-    {% for c in connectionTSG %}
-      <tr>
-          <th scope="row">{{c.teacher}}</th><td>{{c.group}}</td><td>{{c.subject}}</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+  
+<div class="student-container">
+    <h3 class="username">{{teacher.teacher_surname}} {{teacher.teacher_name}} {{teacher.teacher_patronymic}}</h3>
+    <p class="specialty">Должность: {{teacher.teacher_position}}</p>
+    <p class="degree">Научная степень: {{teacher.teacher_position}}</p>
+    <p class="sex">Пол: {{teacher.teacher_sex}}</p>
+</div>
+
+<div class="timetable">
+  <table class="table">
+    <tbody>
+      {% for c in connectionTSG %}
+        <tr>
+            <td scope="row">{{c.teacher}}</td><td>{{c.group}}</td><td>{{c.subject}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% else %}
-<h4>Ваш аккаун не привязан :(</h4>
+
+<h4 class="error">Ваш аккаун не привязан :(</h4>
 {% endif %}
 {% endblock content %}
