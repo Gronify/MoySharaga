@@ -1,108 +1,82 @@
+{% load static %}
 <!DOCTYPE html>
 {% load panel_extras %}
-<html lang="en" class="h-100">
+<html lang="en">
+
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "panel/css/style.css" %}">
+=======
+  <link rel="stylesheet" href="{% static 'panel/css/main.css' %}">
+>>>>>>> 52433ad18421a6f73d6d60e8582f873d0695f2bc
   <title>{% block title %} Моя Шарага {% endblock %}</title>
 </head>
 
-<body class="h-100">
+<body>
+  <div class="content">
+    <div class="container">
+      <header>
+        <p class="logo"><a class="logo-link" href="{% url 'home' %}" >МояШарага</a></p>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav>
+          <ul class="nav">
+            {% if user.is_authenticated %}
+            {% if request.user|has_group:"University" %}
+              <li>
+                <a class="link" id="add" href="{% url 'panel:choice' %}">Добавить</a>
+              </li>
+            {% endif %}
+              <li>
+                <a class="link" href="{% url 'users:logout' %}">Выйти</a>
+              </li>
+              <li>
+                <a class="link" href="{% url 'users:profile' %}">Профиль</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="link" href="{% url 'users:login' %}">Войти</a>
+              </li>
+              <li>
+                <a class="link" href="{% url 'users:register' %}">Зарегистрироваться</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
 
-    <div class="mx-auto order-0">
-      <a class="navbar-brand mx_auto" href="{% url 'home' %}">МояШарага</a>
-    </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">В будку <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Расписание<span class="sr-only">(current)</span></a>
-        </li>
-        {% if user.is_authenticated %}
-        {% if request.user|has_group:"University" %}
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'panel:choice' %}">Добавить<span class="sr-only">(current)</span></a>
-        </li>
-        {% endif %}
-        {% endif %}
-      </ul>
-
-
-      <ul class="navbar-nav ml-auto">
-        </li>
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:login' %}">Войти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:register' %}">Зарегистрироваться</a>
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
-  <!-- Navbar -->
-
-  {% if messages %}
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }}">
-    {{ message }}
-  </div>
-  {% endfor %}
-  {% endif %}
-
-  <div class="container h-100">
-    <div class="row h-100 justify-content-center">
-      <div class="col-10 col-md-10 col-lg-12">
+      <section>
         {% block content %}
+        <img src="{% static "panel/images/logo2.png" %}" alt="logo" class="image">
+        <h1>Моя Шарага</h1>
+        <p class="subhead">Удобный способ взаимодействия с вузом</p>
         {% if user.is_authenticated %}
-        <br>
-        <h1>МояШарага</h1>
-        <p class="description">Удобный способ найти информацию о студенте</p>
-        <div class="form-group">
-          <a href="{% url 'panel:index' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Найти себя</a>
-          <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить</a>
-          {% else %}
-          <br>
-          <h1>Моя Шарага</h1>
-          <p class="lead">Удобный способ найти информацию о студенте</p>
-          <br>
-          <p>Для использованния сервиса нужно иметь аккаунт</p>
-          <a href="{% url 'users:login' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Войти</a>
-          <a href="{% url 'users:register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Зарегистрироваться</a>
-          {% endif %}
-          {% endblock %}
-        </div>
-      </div>
+          <a href="{% url 'panel:index' %}" class="btn" id="btn-reg">Найти себя</a>
+          <a href="{% url 'admin:index' %}" class="btn" id="btn-log">Добавить</a>
+        {% else %}
+        <h2>Присоединись прямо сейчас</h2>
+        <a href="{% url 'users:login' %}" class="btn" id="btn-reg">Зарегистрироваться</a>
+        <a href="{% url 'users:register' %}" class="btn" id="btn-log">Войти</a>
+        {% endif %}
+        {% endblock %}
+      </section>
     </div>
 
-    <footer class="page-footer font-small blue">
-      <div class="footer-copyright text-center py-3">&copy; Moya Sharaga by <a href="#">gaysexteam</a>.</p>
-      </div>
+    <footer class="footer-container">
+      <p>&copy; Moya Sharaga made by <a href="#" class="team">bestteam</a> with &#10084</p>
     </footer>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </div>
+ 
 </body>
 </html>
