@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<h4>{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
-<p>
-    <i class="glyphicon glyphicon-envelope"></i><b>Группа:</b>{{student.group}}
-    <br/>
-    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{student.student_sex}}
-</p>
+
+<div class="student-container">
+    <h4 class="student-name">{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
+    <p class="group">Группа: {{student.group}}</p>
+    <p class="sex">Пол: {{student.student_sex}}</p>
+</div>
 
 
 {% endblock %}

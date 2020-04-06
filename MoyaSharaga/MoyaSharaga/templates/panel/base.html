@@ -17,20 +17,13 @@
         <p class="logo"><a class="logo-link" href="{% url 'home' %}" >МояШарага</a></p>
 
         <nav>
-
           <ul class="nav">
             {% if user.is_authenticated %}
             {% if request.user|has_group:"University" %}
               <li>
-                <a class="link" href="{% url 'panel:choice' %}">Добавить</a>
+                <a class="link" id="add" href="{% url 'panel:choice' %}">Добавить</a>
               </li>
             {% endif %}
-            {% endif %}
-          </ul>
-
-
-          <ul class="nav">
-            {% if user.is_authenticated %}
               <li>
                 <a class="link" href="{% url 'users:logout' %}">Выйти</a>
               </li>
@@ -60,7 +53,7 @@
       <section>
         {% block content %}
         <img src="{% static "panel/images/logo2.png" %}" alt="logo" class="image">
-        <h1>МояШарага</h1>
+        <h1>Моя Шарага</h1>
         <p class="subhead">Удобный способ взаимодействия с вузом</p>
         {% if user.is_authenticated %}
           <a href="{% url 'panel:index' %}" class="btn" id="btn-reg">Найти себя</a>
@@ -75,9 +68,9 @@
     </div>
   </div>
 
-  <footer class="footer-container">
-    <p>&copy; Moya Sharaga made by <a href="#" class="team">gaysexteam</a> with &#10084</p>
+ <!-- <footer class="footer-container">
+    <p>&copy; Moya Sharaga made by <a href="#" class="team">bestteam</a> with &#10084</p>
   </footer>
-
+  --> 
 </body>
 </html>
