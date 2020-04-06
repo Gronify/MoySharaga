@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test # form for auth
 
-from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm, UserStudentForm
+from .forms import TimetableForm, StudentForm, FacultyForm, DepartmentForm, SpecialtyForm, GroupForm, UserStudentForm, UserTeacherForm, ConnectionTSGForm, TeacherForm
 from .models import University, Student, Group, Timetable
 
 
@@ -74,7 +74,7 @@ def adding(request, adding_id):
         else:
             form = DepartmentForm()
             return render(request, 'university_adding.html', {'form': form})
-    
+
     elif adding_id == 3:
         form = SpecialtyForm(request.POST)
         if form.is_valid():
@@ -84,7 +84,7 @@ def adding(request, adding_id):
         else:
             form = SpecialtyForm()
             return render(request, 'university_adding.html', {'form': form})
-    
+
     elif adding_id == 4:
         form = GroupForm(request.POST)
         if form.is_valid():
@@ -106,13 +106,13 @@ def adding(request, adding_id):
             return render(request, 'university_adding.html', {'form': form})
 
     elif adding_id == 6:
-        form = UserStudentForm(request.POST)
+        form = TeacherForm(request.POST)
         if form.is_valid():
             user_student = form.save()
             user_student.save()
             return render(request, 'university_adding.html', {'form': form})
         else:
-            form = UserStudentForm()
+            form = TeacherForm()
             return render(request, 'university_adding.html', {'form': form})
 
     elif adding_id == 7:
@@ -124,6 +124,37 @@ def adding(request, adding_id):
         else:
             form = TimetableForm()
             return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 8:
+        form = UserStudentForm(request.POST)
+        if form.is_valid():
+            timetable = form.save()
+            timetable.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = UserStudentForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 9:
+        form = UserTeacherForm(request.POST)
+        if form.is_valid():
+            timetable = form.save()
+            timetable.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = UserTeacherForm()
+            return render(request, 'university_adding.html', {'form': form})
+
+    elif adding_id == 10:
+        form = ConnectionTSGForm(request.POST)
+        if form.is_valid():
+            timetable = form.save()
+            timetable.save()
+            return render(request, 'university_adding.html', {'form': form})
+        else:
+            form = ConnectionTSGForm()
+            return render(request, 'university_adding.html', {'form': form})
+
 
 
 # choice view

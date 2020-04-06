@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # import models
-from .models import University, Faculty, Department, Specialty, Group, Student, Teacher, Subject, Mark, СonnectionTSG, Timetable, UserStudent
+from .models import University, Faculty, Department, Specialty, Group, Student, Teacher, Subject, Mark, ConnectionTSG, Timetable, UserStudent
 
 
 class UserStudentAdmin(admin.ModelAdmin):
@@ -44,7 +44,7 @@ class MarkAdmin(admin.ModelAdmin):
     list_display = ("subject", "student", "mark_title", "mark_datetime")
 
 
-class СonnectionTSGAdmin(admin.ModelAdmin):
+class ConnectionTSGAdmin(admin.ModelAdmin):
     list_display = ("teacher", "group", "subject")
 
 
@@ -61,6 +61,6 @@ admin.site.register(Student, StudentAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Mark, MarkAdmin)
-admin.site.register(СonnectionTSG, СonnectionTSGAdmin)
+admin.site.register(ConnectionTSG, ConnectionTSGAdmin)
 admin.site.register(Timetable, TimetableAdmin)
 admin.site.register(UserStudent, UserStudentAdmin)

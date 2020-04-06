@@ -1,5 +1,76 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>{{ user.username }}</h1> 
+<p><b>Ваш логин:</b>{{ user.username }}</p>
+
+{% if student %}
+<h4>{{student.student_surname}} {{student.student_name}} {{student.student_patronymic}}</h4>
+<p>
+    <i class="glyphicon glyphicon-envelope"></i><b>Группа:</b>{{student.group}}
+    <br/>
+    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{student.student_sex}}
+</p>
+{% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">ПН</th>
+    {% for c in timetableForMonday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">ВТ</th>
+    {% for c in timetableForTuesday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">СР</th>
+    {% for c in timetableForWendsday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">ЧТ</th>
+    {% for c in timetableForThursday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">ПТ</th>
+    {% for c in timetableForFriday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    <tr>
+      <th scope="row">СБ</th>
+    {% for c in timetableForSaturday %}
+          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+    {% endfor %}
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
+{% elif teacher%}
+<h4>{{teacher.teacher_surname}} {{teacher.teacher_name}} {{teacher.teacher_patronymic}}</h4>
+<p>
+    <i class="glyphicon glyphicon-envelope"></i><b>Должность:</b>{{teacher.teacher_position}}
+    <br/>
+    <i class="glyphicon glyphicon-envelope"></i><b>Научная степень:</b>{{teacher.teacher_position}}
+    <br/>
+    <i class="glyphicon glyphicon-gift"></i><b>Пол:</b>{{teacher.teacher_sex}}
+</p>
+<table class="table">
+  <tbody>
+    {% for c in connectionTSG %}
+      <tr>
+          <th scope="row">{{c.teacher}}</th><td>{{c.group}}</td><td>{{c.subject}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h4>Ваш аккаун не привязан :(</h4>
+{% endif %}
 {% endblock content %}
