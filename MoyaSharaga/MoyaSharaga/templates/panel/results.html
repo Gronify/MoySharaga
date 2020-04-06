@@ -2,13 +2,13 @@
 
 {% block content %}
 <br>
-<h1 class="display-4 inline">Результаты поиска</h1>
+<h1 class="results">Результаты поиска</h1>
 <br>
 {% if students_search %}
 
     {% for c in students_search %}
-        <p>
-          <a href="student_id={{c.id}} " class=" btn btn-light" role="button">{{c.student_name}} {{c.student_surname}} {{c.student_patronymic}}</a>
+        <p class="res-container">
+          <a href="student_id={{c.id}} " class="student-link" role="button">{{c.student_name}} {{c.student_surname}} {{c.student_patronymic}}</a>
         </p>
 
     {% endfor %}

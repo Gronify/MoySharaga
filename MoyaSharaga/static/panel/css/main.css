@@ -1,0 +1,298 @@
+/* This css is shit */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma;
+    background-color: #1D1D1F;
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 0;
+    color: #D5D5D5;
+}
+
+h1 {
+    color: #fff;
+    font-size: 60px;
+    padding: 0;
+    font-weight: normal;
+}
+
+.subhead {
+    font-size: 33px;
+    color: #D5D5D5;
+}
+
+h2 {
+    color: #D5D5D5;
+    font-size: 37px;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+.content {
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    padding-bottom: 2.5rem;
+}
+
+.logo {
+    width: 130px;
+    color: #fff;
+    font-size: 25px;
+    margin-left: 4em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image {
+    width: 30%;
+    height: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: #2997FF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    font-size: 25px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3em;
+    display: flex;
+    background: none;
+
+}
+
+nav ul li {
+    float: left;
+}
+
+.logo-link {
+    color: #D5D5D5;
+    text-align: right;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo-link:hover {
+    text-decoration: underline;
+    color: #2997FF;
+}
+
+.link {
+    color: #D5D5D5;
+    display: inline-block;
+    text-align: right;
+    padding: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #2997FF;
+}
+
+.btn {
+    background: #2997FF;
+    display: inline-flexbox;
+    color: #fff;
+    border-radius: 25px;
+    padding: .7em;
+    text-decoration: none;
+    font-size: 29px;
+    margin-right: 1em;
+
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+
+.footer-container {
+    text-align: center;
+    color: #D5D5D5;
+    font-size: 20px;
+    bottom: 0;
+    height: 0;
+    position: absolute;
+    width: 100%;
+}
+
+#btn-log {
+    padding: .7em 115px;
+}
+
+#btn-reg {
+    padding: .7em 20px;
+}
+
+input {
+    width: 100%;
+    background-color: #1D1D1F;
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 0px;
+    margin: 8px 0;
+    border: none;
+    border-bottom: 2px solid #2997FF;
+}
+
+span {
+    display: none;
+}
+
+small {
+    color: #D5D5D5;
+    font-size: 17px;
+}
+
+form {
+    margin: 3em;
+}
+
+fieldset {
+    background-color: #1D1D1F;
+    border: none;
+}
+
+button {
+    background-color: #2997FF;
+    border: none;
+    font-size: 20px;
+    border-radius: 15px;
+    color: #fff;
+    padding: 1em;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+legend {
+    font-size: 30px;
+    color: #D5D5D5;
+}
+
+label {
+    font-size: 20px;
+    display: flex;
+    color: #D5D5D5;
+}
+
+li {
+    display: flex;
+    margin: 0;
+}
+
+.description {
+    color: #D5D5D5;
+    font-size: 35px;
+}
+
+.search {
+    font-size: 25px;
+    width: 40%;
+    margin-right: 2em;
+}
+
+.btn-search {
+    font-size: 25px;
+    border-radius: 10px;
+    padding: .4em;
+}
+
+.results {
+    font-size: 50px;
+}
+
+.res-container {
+    display: flex;
+    margin-left: 10em;
+}
+
+.student-link {
+    font-size: 30px;
+}
+
+.student-container {
+    margin-top: 5em;
+    color: #D5D5D5;
+}
+
+.student-name {
+    color: #fff;
+    text-align: left;
+    margin-left: 5em;
+    font-size: 30px;
+}
+
+.group, .sex {
+    text-align: left;
+    font-size: 25px;
+    margin-left: 6em;
+}
+
+.login-again {
+    font-size: 30px;
+}
+
+.choice-list {
+    font-size: 25px;
+    margin-left: 6em;
+}
+
+.choice {
+    text-align: start;
+    margin-left: 4em;
+}
+
+select {
+    width: 100%;
+    padding-top: 10px;
+    font-size: 20px;
+    border: none;
+    background-color: #1D1D1F;
+    border-bottom: 2px solid #2997FF;
+    color: #fff;
+    margin: 20px 0;
+}
+
+table {
+    color: #D5D5D5;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+    padding: 15px;
+}
+
+td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1.5px solid #2997FF;
+}
