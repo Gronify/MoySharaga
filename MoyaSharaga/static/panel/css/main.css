@@ -37,14 +37,14 @@ h2 {
     margin-bottom: 1em;
 }
 
-.container {
+.content {
     text-align: center;
-    padding: .8em 2em;
+    position: relative;
+    min-height: 100vh;
 }
 
-.content {
+.container {
     padding-bottom: 2.5rem;
-    height: 100%;
 }
 
 .logo {
@@ -136,9 +136,10 @@ nav ul li {
     text-align: center;
     color: #D5D5D5;
     font-size: 20px;
+    bottom: 0;
+    height: 0;
     position: absolute;
     width: 100%;
-    padding: 0;
 }
 
 #btn-log {
