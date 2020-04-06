@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'panel',
-    'crispy_forms',
     'grappelli',
     'users',
     'django.contrib.admin',
@@ -131,11 +130,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/home/alex/project/MoySharaga/MoyaSharaga/static/',
+    'D:/Gronify/Projects/github/MoySaharaga/MoyaSharaga/static/'    
 ]
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Django Auth
 LOGIN_REDIRECT_URL = 'home'
