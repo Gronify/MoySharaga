@@ -4,46 +4,48 @@
 
 {% block content %}
 {% if timetableForMonday or timetableForTuesday or timetableForWendsday or timetableForThursday or timetableForFriday or timetableForSaturday %}
-<table class="table">
+<div class="timetable">
+  <table class="table">
 
-  <tbody>
-    <tr>
-      <th scope="row">ПН</th>
-    {% for c in timetableForMonday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ВТ</th>
-    {% for c in timetableForTuesday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">СР</th>
-    {% for c in timetableForWendsday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ЧТ</th>
-    {% for c in timetableForThursday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-    <tr>
-      <th scope="row">ПТ</th>
-    {% for c in timetableForFriday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    <tr>
-      <th scope="row">СБ</th>
-    {% for c in timetableForSaturday %}
-          <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
-    {% endfor %}
-    </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr>
+        <td scope="row">ПН</td>
+      {% for c in timetableForMonday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ВТ</td>
+      {% for c in timetableForTuesday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">СР</td>
+      {% for c in timetableForWendsday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ЧТ</td>
+      {% for c in timetableForThursday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+      <tr>
+        <td scope="row">ПТ</td>
+      {% for c in timetableForFriday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      <tr>
+        <td scope="row">СБ</td>
+      {% for c in timetableForSaturday %}
+            <td>{{c.subject}}<br>{{c.subject_datetime_start}} - {{c.subject_datetime_stop}}</td>
+      {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 {% else %}
         Группа не найдена =(

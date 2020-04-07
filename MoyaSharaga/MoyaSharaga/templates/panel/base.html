@@ -13,10 +13,16 @@
   <div class="content">
     <div class="container">
       <header>
-        <p class="logo"><a class="logo-link" href="{% url 'home' %}" >МояШарага</a></p>
+        <p><a class="logo" href="{% url 'home' %}" >МояШарага</a></p>
 
         <nav>
-          <ul class="nav">
+          <a href="#" class="hide-desktop">
+            <img src="{% static 'panel/images/ham.png' %}" alt="ham" class="ham">
+          </a>
+          <ul class="nav hide-mobile">
+              <li class="exit-btn hide-desktop">
+                <img src="{% static 'panel/images/exit.svg' %}" alt="exit">
+              </li>
             {% if user.is_authenticated %}
             {% if request.user|has_group:"University" %}
               <li>
@@ -52,13 +58,13 @@
       <section>
         {% block content %}
         <img src="{% static "panel/images/logo2.png" %}" alt="logo" class="image">
-        <h1>Моя Шарага</h1>
-        <p class="subhead">Удобный способ взаимодействия с вузом</p>
+        <h1 class="name">Моя Шарага</h1>
+        <p class="subname">Удобный способ взаимодействия с вузом</p>
         {% if user.is_authenticated %}
-          <a href="{% url 'panel:index' %}" class="btn" id="btn-reg">Найти себя</a>
-          <a href="{% url 'admin:index' %}" class="btn" id="btn-log">Добавить</a>
+          <a href="{% url 'panel:index' %}" class="btn" id="btn-search">Найти себя</a>
+          <a href="{% url 'admin:index' %}" class="btn" id="btn-add">Добавить</a>
         {% else %}
-        <h2>Присоединись прямо сейчас</h2>
+        <h2 class="advise">Присоединись прямо сейчас</h2>
         <a href="{% url 'users:login' %}" class="btn" id="btn-reg">Зарегистрироваться</a>
         <a href="{% url 'users:register' %}" class="btn" id="btn-log">Войти</a>
         {% endif %}
