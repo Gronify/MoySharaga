@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Timetable, Faculty, Department, Specialty, Student, Teacher, Group, UserStudent, UserTeacher, ConnectionTSG
+from .models import Timetable, Faculty, Department, Specialty, Student, Teacher, Group, UserStudent, UserTeacher, Mark, ConnectionTSG
 
 
 class UserStudentForm(forms.ModelForm):
@@ -68,3 +68,9 @@ class GroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = ('specialty', 'group_title')
+
+class MarkForm(forms.ModelForm):
+
+    class Meta:
+        model = Mark
+        fields = ('subject', 'student', 'mark_title')

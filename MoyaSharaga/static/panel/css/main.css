@@ -113,7 +113,9 @@ section {
 .btn:hover {
     text-decoration: none;
 }
-
+footer{
+  bottom: auto;
+}
 #btn-log {
     padding: .7em 115px;
 }

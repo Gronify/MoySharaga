@@ -110,7 +110,7 @@ class Student(models.Model):
     group = models.ForeignKey(Group, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.student_surname
+        return self.student_surname + ' ' + self.student_name + ' ' + self.student_patronymic + ' (' + str(self.group) + ')'
 
     class Meta:
         verbose_name = 'Студент'
@@ -128,7 +128,7 @@ class Teacher(models.Model):
     teacher_degree = models.CharField('Научная степень', max_length = 200) # НАПРИМЕР Профессор
 
     def __str__(self):
-        return self.teacher_surname
+        return self.teacher_surname + ' ' + self.teacher_name + ' ' + self.teacher_patronymic
 
     class Meta:
         verbose_name = 'Преподаватель'
@@ -215,7 +215,7 @@ class UserTeacher(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.student
+        return self.teacher
 
     class Meta:
         verbose_name = 'Связь'
