@@ -54,7 +54,7 @@
 {% endif %}
 
 {% elif teacher%}
-  
+
 <div class="student-container">
     <h3 class="username">{{teacher.teacher_surname}} {{teacher.teacher_name}} {{teacher.teacher_patronymic}}</h3>
     <p class="specialty">Должность: {{teacher.teacher_position}}</p>
@@ -73,6 +73,11 @@
     </tbody>
   </table>
 </div>
+<h1>Поставить оценку</h1>
+<form method="POST" class="post-form"> {% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="save btn btn-primary btn-lg">Поставить</button>
+</form>
 {% else %}
 
 <h4 class="error">Ваш аккаун не привязан :(</h4>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages # django messages for certain actions
 from .forms import UserRegisterForm
+from panel.forms import MarkForm
 from django.contrib.auth.decorators import login_required # decorator for auth
 
 from panel.models import University, Student, Group, Timetable, UserStudent, UserTeacher, ConnectionTSG, Teacher
@@ -37,7 +38,12 @@ def profile(request):
         teacher = Teacher.objects.get(id = teacherid[0])
         connectionTSG = ConnectionTSG.objects.filter(teacher_id = teacherid[0])
         student = ''
-
-        return render(request, 'profile.html', {'teacher': teacher, 'connectionTSG':connectionTSG, 'student': student} )
+        form = MarkForm()
+        if form.is_valid():
+            mark = form.save()
+            mark.save()
+        else:
+            form = MarkForm();
+        return render(request, 'profile.html', {'teacher': teacher, 'connectionTSG':connectionTSG, 'student': student, 'form': form} )
     else:
         return render(request, 'profile.html',)
