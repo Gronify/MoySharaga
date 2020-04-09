@@ -4,7 +4,8 @@ from .forms import UserRegisterForm
 from panel.forms import MarkForm
 from django.contrib.auth.decorators import login_required # decorator for auth
 
-from panel.models import University, Student, Group, Timetable, UserStudent, UserTeacher, ConnectionTSG, Teacher
+from panel.models import University, Student, Group, Timetable, UserStudent, UserTeacher, ConnectionTSG, Teacher, University
+
 
 #view for registration
 def register(request):
@@ -20,8 +21,10 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 # view for profile
+
 @login_required
 def profile(request):
+    user = request.user
     if UserStudent.objects.filter(user = request.user):
         studentid = UserStudent.objects.filter(user = request.user).values_list('student_id').first()
         student = Student.objects.get(id = studentid[0])
@@ -45,5 +48,9 @@ def profile(request):
         else:
             form = MarkForm();
         return render(request, 'profile.html', {'teacher': teacher, 'connectionTSG':connectionTSG, 'student': student, 'form': form} )
+    elif user.groups.filter(name='University').exists():
+        addlist = {'1': 'Факультет', '2': 'Кафедру', '3': 'Специальность', '4': 'Группу', '5': 'Студента', '6': 'Преподавателя', '7': 'Расписание', '8': 'Связать пользователя со студентом', '9': 'Связать пользователя с преподавателем', '10': 'Связать преподавателя с предметом с группой'}
+        university = University.objects.filter()
+        return render(request, 'profile.html', {'addlist': addlist, 'university': university})
     else:
         return render(request, 'profile.html',)

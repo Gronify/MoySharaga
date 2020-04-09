@@ -78,6 +78,15 @@
 {{ form.as_p }}
 <button type="submit" class="save btn btn-primary btn-lg">Поставить</button>
 </form>
+{% elif university%}
+<div class="choice-container">
+    <h1 class="choice">Что вы хотите сделать?</h1>
+    <ul class="choice-list">
+      {% for n, a in addlist.items %}
+        <li>
+            <a href="../../panel/adding_id={{n}}">{{a}}</a>
+        </li>
+      {% endfor %}
 {% else %}
 
 <h4 class="error">Ваш аккаун не привязан :(</h4>
